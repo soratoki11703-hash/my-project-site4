@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mirror Morning — FIRSTSKY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  :root{--bg:#f7f6f4;--ink:#1a1a18;--mid:#888880;--soft:#d8d6d0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;cursor:none;-webkit-font-smoothing:antialiased;}
+  #cur{position:fixed;width:6px;height:6px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;}
+  #cur-o{position:fixed;width:28px;height:28px;border:1px solid rgba(26,26,24,.3);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);}
+  .cur-big #cur{width:44px;height:44px;background:rgba(26,26,24,.07);}
+  .cur-big #cur-o{opacity:0;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.8rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(247,246,244,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--soft);}
+  .nav-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;text-decoration:none;color:var(--ink);}
+  .nav-back{font-size:.68rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .2s;}
+  .nav-back:hover{color:var(--ink);}
+  .hero{padding:9rem 3rem 4rem;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:end;}
+  .hero-left{opacity:0;animation:rise .8s .1s forwards;}
+  .hero-num{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--soft);margin-bottom:1.5rem;}
+  .hero-title{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:400;line-height:1.05;letter-spacing:-.02em;}
+  .hero-title em{font-style:italic;color:var(--mid);}
+  .hero-right{opacity:0;animation:rise .8s .3s forwards;}
+  .hero-tag{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem;}
+  .hero-tag::before{content:'';display:block;width:24px;height:1px;background:var(--soft);}
+  .hero-desc{font-size:.82rem;line-height:1.9;color:var(--mid);margin-bottom:1.5rem;}
+  .hero-year{font-size:.65rem;color:var(--soft);letter-spacing:.1em;}
+  .photo-section{padding:0 3rem 6rem;max-width:1180px;margin:0 auto;opacity:0;animation:rise .9s .5s forwards;}
+  .photo-main{width:100%;max-height:80vh;object-fit:cover;display:block;}
+  .nav-works{padding:4rem 3rem;max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--soft);}
+  .nav-work-link{display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--mid);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;}
+  .nav-work-link:hover{color:var(--ink);}
+  .nav-work-center{font-family:'DM Serif Display',serif;font-size:.95rem;text-decoration:none;color:var(--ink);}
+  footer{padding:2rem 3rem;border-top:1px solid var(--soft);display:flex;justify-content:space-between;}
+  footer p{font-size:.62rem;color:var(--soft);letter-spacing:.08em;}
+  @keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur-o"></div>
+<nav>
+  <a href="index.html" class="nav-logo">FIRSTSKY</a>
+  <a href="index.html" class="nav-back">← All Works</a>
+</nav>
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-num">01 / 05</div>
+    <h1 class="hero-title">Mirror Morning</h1>
+  </div>
+  <div class="hero-right">
+    <div class="hero-tag">Portrait / Daily</div>
+    <p class="hero-desc">ホテルの一室。鏡に映る自分と、散らかった机の上。スーツを着て、まだ眠そうな朝7時13分の記録。</p>
+    <p class="hero-year">2025</p>
+  </div>
+</div>
+<div class="photo-section">
+  <img src="photo1.jpeg" alt="Mirror Morning" class="photo-main">
+</div>
+<div class="nav-works">
+  <a href="work5.html" class="nav-work-link">← Prev</a>
+  <a href="index.html" class="nav-work-center">All Works</a>
+  <a href="work2.html" class="nav-work-link">Next →</a>
+</div>
+<footer>
+  <p>© 2026 FIRSTSKY.</p>
+  <p>Mirror Morning — 2025</p>
+</footer>
+<script>
+  const cur=document.getElementById('cur'),curo=document.getElementById('cur-o');
+  let mx=0,my=0,ox=0,oy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function l(){ox+=(mx-ox)*.13;oy+=(my-oy)*.13;curo.style.left=ox+'px';curo.style.top=oy+'px';requestAnimationFrame(l);})();
+  document.querySelectorAll('a').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cur-big'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cur-big'));});
+</script>
+</body>
+</html>
